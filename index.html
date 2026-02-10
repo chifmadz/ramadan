@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramadan Greeting - Skaka International School</title>
+    
+    <!-- الخطوط العربية -->
+    <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cairo:wght@400;700;900&display=swap" rel="stylesheet">
+    
+    <!-- مكتبة تحويل الشاشة إلى صورة (تم تحديثها للنسخة الأكثر استقراراً) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    
+    <style>
+        body {
+            font-family: 'Cairo', sans-serif;
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #001a1a 0%, #004d4d 100%);
+            overflow: hidden;
+            color: #fff;
+            position: relative;
+        }
+
+        .stars { position: absolute; width: 100%; height: 100%; z-index: 0; pointer-events: none; }
+        .star { position: absolute; background-color: #FFD700; border-radius: 50%; animation: twinkle infinite ease-in-out; }
+        @keyframes twinkle { 0%, 100% { opacity: 0.2; transform: scale(0.8); } 50% { opacity: 1; transform: scale(1.2); box-shadow: 0 0 10px #FFD700; } }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 215, 0, 0.3);
+            border-radius: 25px;
+            padding: 30px;
+            width: 90%;
+            max-width: 500px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+
+        .logo-img {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            background: #fff;
+            padding: 5px;
+            border: 3px solid #FFD700; 
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            margin-bottom: 15px;
+            object-fit: contain;
+        }
+
+        h1.school-name {
+            font-family: 'Cairo', sans-serif;
+            font-weight: 900;
+            font-size: 26px;
+            color: #FFD700;
+            margin: 10px 0;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+            direction: ltr;
+        }
+
+        p.subtitle { font-size: 18px; line-height: 1.8; color: #e0f2f1; margin-bottom: 25px; }
+
+        .input-group { margin-bottom: 20px; }
+        .name-input {
+            width: 85%;
+            padding: 15px 20px;
+            font-size: 18px;
+            font-family: 'Cairo', sans-serif;
+            background: rgba(0, 0, 0, 0.3);
+            border: 2px solid rgba(255, 215, 0, 0.5);
+            color: #fff;
+            border-radius: 50px;
+            text-align: center;
+            outline: none;
+        }
+        .name-input::placeholder { color: #aaa; }
+        .name-input:focus { border-color: #FFD700; background: rgba(0, 0, 0, 0.5); }
+
+        .btn-container { display: flex; flex-direction: column; gap: 12px; align-items: center; margin-top: 15px; }
+        .btn {
+            border: none;
+            padding: 12px 25px;
+            font-size: 18px;
+            font-weight: 900;
+            border-radius: 50px;
+            cursor: pointer;
+            font-family: 'Cairo', sans-serif;
+            transition: all 0.3s ease;
+            width: 90%;
+        }
+        .btn-primary { background: linear-gradient(45deg, #FFA500, #FFD700); color: #002222; box-shadow: 0 10px 20px rgba(255, 165, 0, 0.3); }
+        .btn-primary:hover { transform: translateY(-3px) scale(1.02); }
+        .btn-download { background: #25D366; color: white; }
+        .btn-download:hover { background: #1ebd5a; }
+        .btn-share { background: #008080; color: white; border: 2px solid #00b3b3; }
+        .btn-share:hover { background: #00b3b3; }
+        .btn-back { background: transparent; color: #FFD700; border: 2px solid #FFD700; }
+        .btn-back:hover { background: rgba(255, 215, 0, 0.1); color: #fff; }
+
+        #result-view { display: none; animation: fadeInScale 0.8s ease-out; }
+
+        .export-card {
+            background: radial-gradient(circle at center, #003333 0%, #001111 100%);
+            border: 2px solid #FFD700;
+            border-radius: 20px;
+            padding: 30px 20px;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .lantern { font-size: 50px; display: inline-block; animation: swing 2.5s infinite ease-in-out alternate; transform-origin: top center; margin-bottom: 5px; }
+        .greeting-title { font-family: 'Amiri', serif; font-size: 28px; color: #fff; margin: 10px 0 5px 0; }
+        .personalized-name {
+            font-family: 'Amiri', serif; font-size: 40px; font-weight: bold; color: #FFD700;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8); margin: 5px 0 15px 0; line-height: 1.2;
+        }
+        .brand-footer { color: #FFD700; font-size: 16px; font-weight: bold; margin: 0; direction: ltr; }
+
+        @keyframes fadeInScale { 0% { opacity: 0; transform: scale(0.8); } 100% { opacity: 1; transform: scale(1); } }
+        @keyframes swing { 0% { transform: rotate(-15deg); } 100% { transform: rotate(15deg); } }
+    </style>
+</head>
+<body>
+
+    <div class="stars" id="stars"></div>
+
+    <div class="glass-card">
+        
+        <!-- الواجهة 1: الإدخال -->
+        <div id="input-view">
+            <!-- تمت إزالة onerror لتفادي مشاكل التحميل العكسي -->
+            <img src="logo.png" alt="Logo" class="logo-img" id="mainLogo">
+            <h1 class="school-name">Skaka International School</h1>
+            <p class="subtitle">كل عام وأنتم بخير<br>🌙 تهنئكم بحلول شهر رمضان المبارك 🌙</p>
+            
+            <div class="input-group">
+                <input type="text" id="userName" class="name-input" placeholder="اكتب اسمك هنا لصنع بطاقتك...">
+            </div>
+            
+            <button class="btn btn-primary" onclick="generateCard()">✨ عرض التهنئة ✨</button>
+        </div>
+
+        <!-- الواجهة 2: النتيجة -->
+        <div id="result-view">
+            
+            <!-- بطاقة التصدير -->
+            <div id="capture-card" class="export-card">
+                <img src="logo.png" alt="Logo" class="logo-img" style="width: 70px; height: 70px; margin-bottom: 5px;" id="exportLogo">
+                <div class="lantern">🏮</div>
+                <h2 class="greeting-title">رمضان مبارك يا</h2>
+                <div class="personalized-name" id="finalName"></div>
+                <p class="subtitle" style="font-size: 16px; margin-bottom: 10px;">أعاده الله علينا وعليكم باليمن والبركات وتقبل منكم الصيام والقيام ✨</p>
+                <p class="brand-footer">Skaka International School</p>
+            </div>
+
+            <div class="btn-container">
+                <button class="btn btn-download" id="downloadBtn" onclick="downloadImage()">📸 تحميل الصورة</button>
+                <button class="btn btn-share" onclick="shareSite()">🔗 مشاركة الرابط</button>
+                <button class="btn btn-back" onclick="resetCard()">🔄 اصنع بطاقة أخرى</button>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        // النجوم
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for(let i=0; i<40; i++) {
+                let star = document.createElement('div');
+                star.className = 'star';
+                star.style.width = Math.random() * 4 + 'px';
+                star.style.height = star.style.width;
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+        createStars();
+
+        function generateCard() {
+            const nameInput = document.getElementById("userName").value.trim();
+            if (nameInput === "") {
+                alert("يرجى كتابة اسمك أولاً! 🌙");
+                return;
+            }
+            document.getElementById("finalName").innerText = nameInput;
+            document.getElementById("input-view").style.display = "none";
+            document.getElementById("result-view").style.display = "block";
+        }
+
+        function resetCard() {
+            document.getElementById("userName").value = "";
+            document.getElementById("result-view").style.display = "none";
+            document.getElementById("input-view").style.display = "block";
+        }
+
+        // ===================================
+        // الإصلاح الجذري لدالة التحميل (تعمل 100% على الجوالات)
+        // ===================================
+        function downloadImage() {
+            const btn = document.getElementById("downloadBtn");
+            const originalText = btn.innerHTML;
+            
+            // منع الضغط المتكرر
+            btn.innerHTML = "⏳ جاري التحميل...";
+            btn.disabled = true;
+
+            const captureElement = document.getElementById("capture-card");
+
+            // تأخير بسيط لضمان تحميل الخطوط والصور
+            setTimeout(() => {
+                html2canvas(captureElement, {
+                    scale: 2, // تم التخفيض إلى 2 لكي لا ينهار متصفح الجوال، وهي دقة ممتازة جداً
+                    useCORS: true,
+                    backgroundColor: "#002222", // لون الخلفية مطابق للبطاقة
+                    logging: false
+                }).then(canvas => {
+                    const userName = document.getElementById("finalName").innerText || "Card";
+                    const fileName = `Ramadan_${userName}.png`;
+
+                    // استخدام toBlob وهي أحدث وأأمن طريقة للموبايلات
+                    canvas.toBlob(function(blob) {
+                        if (!blob) {
+                            throw new Error("فشل في توليد الصورة");
+                        }
+                        const url = window.URL.createObjectURL(blob);
+                        const link = document.createElement("a");
+                        link.style.display = "none";
+                        link.href = url;
+                        link.download = fileName;
+                        
+                        document.body.appendChild(link);
+                        link.click();
+                        
+                        // تنظيف الذاكرة
+                        setTimeout(() => {
+                            document.body.removeChild(link);
+                            window.URL.revokeObjectURL(url);
+                        }, 100);
+
+                        // إعادة الزر لشكله الطبيعي
+                        btn.innerHTML = originalText;
+                        btn.disabled = false;
+                    }, 'image/png');
+
+                }).catch(err => {
+                    console.error("خطأ:", err);
+                    alert("عذراً، حدث خطأ أثناء التحميل. جرب مرة أخرى.");
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                });
+            }, 300); // تأخير 300 جزء من الثانية لضمان استقرار الواجهة
+        }
+
+        function shareSite() {
+            const siteUrl = window.location.href; 
+            const shareTitle = "Ramadan Greeting - Skaka International School";
+            const shareText = "اصنع بطاقة تهنئة رمضانية باسمك من Skaka International School! 🌙✨\nادخل الرابط وصمم بطاقتك الآن: ";
+
+            if (navigator.share) {
+                navigator.share({
+                    title: shareTitle,
+                    text: shareText,
+                    url: siteUrl
+                }).catch(console.error);
+            } else {
+                navigator.clipboard.writeText(siteUrl).then(() => {
+                    alert("✅ تم نسخ رابط الموقع بنجاح!");
+                }).catch(() => {
+                    alert("يرجى نسخ الرابط من أعلى المتصفح.");
+                });
+            }
+        }
+    </script>
+
+</body>
+</html>
